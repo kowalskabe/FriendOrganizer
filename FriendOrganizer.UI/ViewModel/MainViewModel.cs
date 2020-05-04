@@ -7,9 +7,14 @@ namespace FriendOrganizer.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        private IFiendDataService _friendDataService; 
+        private IFriendDataService _friendDataService; 
         private Friend _selectedFriend;
 
+        public MainViewModel(IFriendDataService friendDataService)
+        {
+            Friends = new ObservableCollection<Friend>();
+            _friendDataService = friendDataService;
+        }
 
         public ObservableCollection<Friend> Friends {get; set;}
 
@@ -24,11 +29,7 @@ namespace FriendOrganizer.UI.ViewModel
         }
         
 
-        public MainViewModel(IFiendDataService friendDataService)
-        {
-            Friends = new ObservableCollection<Friend>();
-            _friendDataService = friendDataService;
-        }
+       
 
         public void Load()
         {
